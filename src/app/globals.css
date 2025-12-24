@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+:root {
+  /* Backgrounds */
+  --background: #ffffff;
+  --background-secondary: #f8f9fa;
+  --background-hover: #f3f4f6;
+  
+  /* Text hierarchy */
+  --foreground: #09090b;
+  --foreground-secondary: #52525b;
+  --foreground-tertiary: #a1a1aa;
+  
+  /* Status colors */
+  --status-delivered: #059669;
+  --status-delivered-bg: #d1fae5;
+  --status-delayed: #d97706;
+  --status-delayed-bg: #fef3c7;
+  --status-transit: #2563eb;
+  --status-transit-bg: #dbeafe;
+  --status-failed: #dc2626;
+  --status-failed-bg: #fee2e2;
+  --status-pending: #7c3aed;
+  --status-pending-bg: #ede9fe;
+  
+  /* Accent */
+  --accent: #6366f1;
+  --accent-light: #e0e7ff;
+  
+  /* Borders */
+  --border: #e4e4e7;
+  --border-hover: #d4d4d8;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --background: #09090b;
+  --background-secondary: #18181b;
+  --background-hover: #27272a;
+  
+  --foreground: #fafafa;
+  --foreground-secondary: #a1a1aa;
+  --foreground-tertiary: #71717a;
+  
+  --status-delivered-bg: #064e3b;
+  --status-delayed-bg: #451a03;
+  --status-transit-bg: #172554;
+  --status-failed-bg: #7f1d1d;
+  --status-pending-bg: #3b0764;
+  
+  --accent-light: #312e81;
+  
+  --border: #27272a;
+  --border-hover: #3f3f46;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-hover: var(--background-hover);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-tertiary: var(--foreground-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(var(--background), 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Status badge styles */
+.status-delivered {
+  background: var(--status-delivered-bg);
+  color: var(--status-delivered);
+}
+
+.status-delayed {
+  background: var(--status-delayed-bg);
+  color: var(--status-delayed);
+}
+
+.status-transit {
+  background: var(--status-transit-bg);
+  color: var(--status-transit);
+}
+
+.status-failed {
+  background: var(--status-failed-bg);
+  color: var(--status-failed);
+}
+
+.status-pending {
+  background: var(--status-pending-bg);
+  color: var(--status-pending);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulse 2s ease-in-out infinite;
+}
